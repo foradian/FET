@@ -1,0 +1,245 @@
+Thanks to (chronologically):
+
+Costin Badica - he advised Liviu Lalescu to begin this project, offered suggestions and provided him with documentation.
+
+Carsten Niehaus - suggestions.
+
+Imre Nagy - e-mail list (does not work anymore), suggestions.
+
+Sajith V. K. - suggestions
+
+Michael Towers - lots of bugs reported, sample files, suggestions, front/back-end.
+
+Antti Leppik - sample file, suggestions.
+
+Ian Fantom - sample file, suggestions.
+
+Simon Ghetti - sample files, suggestions.
+
+Gibbon Tamba - sample file, bug reported.
+
+Jerome Durand - bug reported, French translation.
+
+Marek Jaszuk - bugs reported, suggestions, sample file.
+
+Ramanathan Srinivasan - suggested Constraint2ActivitiesConsecutive and Constraint2ActivitiesGrouped.
+
+Vimal Joseph - suggestions, a script to convert the .xml results into .tex.
+
+Cristian Gherman - bugs reported, suggestions.
+
+Nicholas Robinson - suggestions.
+
+Radu Spineanu - Debian package.
+
+Morten Piil - bug reported, sample file.
+
+Sebastian Canagaratna - lots of suggestions, bugs reported, sample files.
+
+Abdul Hadi Kamel - sample file, bugs reported, Malay translation.
+
+Miguel Gea Milvaques - Catalan translation.
+
+Frans de Bruijn - bug reported.
+
+Radoslaw Pasiok - Polish translation.
+
+Daan Huntjens - bug reported, sample file, suggestions, partial Dutch translation.
+
+Yush Yuen - sample file, bug report.
+
+Scott Sweeting - sample file, suggestions, icon for FET.
+
+Dragos Petrascu - suggestions.
+
+Daniel S. - suggestions, help files for the constraints.
+
+Gianluca Salvo - suggested Constraint2ActivitiesOrdered.
+
+Sebastian O'Halloran - suggestions.
+
+Mehmet Gezmisoglu - Turkish translation.
+
+Tom Hosty - sample file, bugs reported, user's guide.
+
+Niels Fikse - Dutch translation.
+
+Simon Bohlin - suggestions.
+
+Volker Dirr - German translation, bug reports, suggestions, 2-point and uniform crossover implementation and testing.
+
+Les Richardson - Update of the FAQ.
+
+Gabi Danon - instructions on how to compile/run FET on Mac OS X
+
+Manolo Par - suggested ConstraintTeachersMinHoursDaily.
+
+Viktor Ferenczi - bug report, Hungarian translation.
+
+Patrick Fox - improved French translation.
+
+Andres Chandia - icons.
+
+Zoran Zdravkovski - bug reports, Macedonian translation.
+
+Constantin Romulus - bug reports, sample file (private), small improvements in Romanian translation, testing, fet forum logo.
+
+L. W. Johnstone - suggestions, sample file.
+
+Zsolt Udvari - suggestions.
+
+mantas - bug reports.
+
+moryus - bug report.
+
+bb - suggestions.
+
+Maciej Deorowicz - suggestions.
+
+José César Fernández López - Spanish translation.
+
+Daniel Chiriac - suggestions.
+
+Dimitrios Ropokis - suggestions, Greek translation.
+
+Danail - suggestions.
+
+Peter Ambroz - suggestions.
+
+Nirwan Yus - Indonesian translation.
+
+Marco Barsotti - Italian translation, testing.
+
+Silver - Arabic translation, sample file.
+
+kdsayang - suggestions.
+
+didit - suggestions.
+
+Bobby Wise - sample files.
+
+Willy Henckert - sample file.
+
+Wilfred - suggestions.
+
+W. D. John - sample file.
+
+Darius Staigys - Lithuanian translation.
+
+George Miliotis [Ionio] - suggestions.
+
+Sílvia - suggestions, sample file.
+
+alfaromeo - suggestions, testing.
+
+Niels Stargardt - sample file.
+
+Cristian Balint - sample files.
+
+sherman - suggestion.
+
+Azu Boba - suggestion.
+
+Thomas Schwartz - bug report.
+
+Catalin Maican - suggestions.
+
+Ilya V. Paramonov - Russian translation.
+
+Hamed SadeghiNeshat - Persian translation.
+
+Joan de Gracia - Catalan translation of the manual.
+
+Massimo Mancini - suggestions.
+
+Regina V. Kryvakovska - Russian translation additional checking.
+
+Bingen - suggestions.
+
+Angela - suggestions.
+
+T. Renganathan - sample file.
+
+Marco - sample file.
+
+sally sat - Persian translation update.
+
+sstt2 - bug report.
+
+Nikos Koutsoukos - suggestions, bug reports.
+
+pinco - suggestions.
+
+Ben Bauer - suggestions.
+
+Rodica Lalescu - suggestions.
+
+Gigica Nedelcu - icons design.
+
+Paolo Cataldi - suggestions.
+
+Gerrit Jan Veltink - sample file, suggestions.
+
+Soyeb Aswat - suggestions.
+
+Andriy Melnyk - Ukrainian translation.
+
+Frans - suggestions.
+
+m - suggestions.
+
+Christoph Schilling - sample file.
+
+Frank Mártin - Brazilian Portuguese translation.
+
+Werner Bruns - Brazilian Portuguese translation.
+
+aliponte - sample file.
+
+David Lamhauge - Danish translation.
+
+murad - suggestions.
+
+Achini Duisna - Sinhala translation.
+
+Ondrej Gregor - Slovak translation.
+
+Karel Rodríguez Varona - bug report.
+
+Remus Turea - help with the FET homepage.
+
+Joachim - suggestions.
+
+Chichi Lalescu - suggestions.
+
+Iftekhar Ahmad - suggestions.
+
+DT - suggestions.
+
+Yotam Medini - Hebrew translation.
+
+mohd - suggestions.
+
+Dimitris Kanatas - Greek translation update.
+
+waleed - sample file.
+
+aang - suggestions.
+
+M K Lohumi - sample file.
+
+Régis Bouguin - French translation update.
+
+Ivan Starchevicy - Serbian translation.
+
+Radan Putnik - Serbian translation.
+
+Asti Widayanti - sample file.
+
+uni_instructor - suggestions.
+
+liquid - suggestions.
+
+Juan Marcos Filgueira Gomis - Galician translation (based on the Spanish translation by José César Fernández López).
+
+llantones - example file.

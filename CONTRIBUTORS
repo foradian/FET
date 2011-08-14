@@ -1,0 +1,32 @@
+Code contributor:
+Volker Dirr (to contact Volker Dirr visit http://www.timetabling.de/)
+	Lots of helping with testing, bug reports, suggestions, comparisons
+
+	XHTML generation code modified by Volker Dirr from old HTML generation code
+	(old code by Liviu Lalescu)
+	added features: - XHTML 1.0 strict valid
+		- use colspan and rowspan
+		- times vertical
+		- table of contents with hyperlinks
+		- css and JavaScript support
+		- print rooms timetable
+		- level of HTML for timetables
+		- print groups and years timetable
+		- print subjects timetable
+		- print teachers' free periods timetable
+		- print activities timetable
+		- index HTML file
+		- print daily timetable
+		- print activities with same starting time
+
+	Import and export of CSV files
+
+	Export of advanced statistics
+
+	Important suggestions and partial code for great speed improvements in some particular cases
+	(better computation for initial order of activities, which leads to much faster generation for some
+	particular cases of timetables).
+
+	Idea and partial code for locking the activities.
+
+	Activity planning dialog.

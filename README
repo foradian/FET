@@ -1,0 +1,330 @@
+This is FET version 5.14.5
+
+
+Program description:
+
+	FET is free timetabling software (licensed under GNU GPL v2 or later).
+	This program aims to automatically generate the timetable of a school, high-school or university.
+	It may be used for other timetabling purposes.
+
+	FET can mean "Free Educational Timetabling" (the "E" in the middle may also stand for other words, based on your personal preference).
+
+	FET homepage: http://lalescu.ro/liviu/fet/
+
+
+Requirements:
+
+	FET is created in the following environment: openSUSE 11.4 GNU/Linux distribution, Linux 2.6.37, Midnight Commander 4.7.5.1,
+	KDiff3 0.9.95, Qt 4.7.3, gcc 4.5.3, g++ 4.5.3, make 3.82, other great free tools.
+	FET can be run on any platform supported by the free software Qt (GNU/Linux, Windows, Mac OS X).
+
+	GNU/Linux, Mac OS X and similar OS's:
+	Software:
+		make 3.82 or similar (GNU Make)
+		gcc 4.5.3 or similar
+		g++ 4.5.3 or similar (or gcc-g++, or gcc-c++, the name may vary. This program may be included in the gcc package)
+		Qt 4.7.3 or compatible
+
+	Microsoft Windows:
+	For running, you need only the archive of FET compiled for Windows (which contains the MinGW and Qt dlls).
+	For compiling, you need Qt and a compatible C++ compiler (MinGW is a possibility).
+
+
+Download:
+
+	You can download the latest version from the FET homepage, http://lalescu.ro/liviu/fet/
+
+	Older versions: you may find some older versions on the FET homepage. If you are interested in all the older
+	versions, you will have to contact the author.
+
+
+Getting - compiling - installing GNU tools: make, gcc and g++ (or gcc-g++, or gcc-c++):
+
+	GNU/Linux, Mac OS X: Most probably, your platform has these installed by default or available on the internet
+	as precompiled packages. If you don't have them, please install them using YaST (on openSUSE), Adept Manager
+	(on Ubuntu or Kubuntu) or other package manager.
+	To verify that you have the correct packages, write "make --version", "gcc --version" and
+	"g++ --version".
+
+	Windows: you need a Qt compatible C++ compiler
+	Maybe an easy option is the MinGW compiler, available inside the Qt SDK or on the Qt download page. The current version of FET
+	was compiled using MinGW downloaded from: ftp://ftp.qt.nokia.com/misc/MinGW-gcc440_1.zip , you may also check
+	ftp://ftp.qt.nokia.com/misc/ and get the latest MinGW, or search the Qt homepage (http://qt.nokia.com/) for updated links/packages.
+	If you choose to install Qt SDK, MinGW is included. You may alternatively download MinGW from its homepage.
+
+
+Getting - compiling - installing Qt by Nokia:
+
+	You will need Qt 4.7.3 or compatible to compile FET.
+	You can get the corresponding version of Qt with your package manager or from http://qt.nokia.com/
+	Qt can be downloaded with LGPL (open source) or commercial license. You may choose between Framework or SDK versions.
+	Any variant should work.
+
+	GNU/Linux: It is possible to use YaST (or Adept Manager) or other package managers to get your version of Qt, pre-compiled.
+	Or you can download, compile and install Qt from http://qt.nokia.com/
+	On the author's openSUSE GNU/Linux, which has pre-compiled packages on the internet, the author needs to install the packages
+	libqt4 and libqt4-devel (libqt4 is installed by default, probably) - to compile+run FET.
+	For Ubuntu GNU/Linux (advice from a user):
+	sudo apt-get install qt4-qmake
+	sudo apt-get build-dep qt4-qmake
+	sudo apt-get install libqt4-dev
+	sudo apt-get build-dep libqt4-dev
+
+	Windows - Download latest Qt from http://qt.nokia.com/
+	If you choose the LGPL Qt for MinGW:
+		For the Framework version, you need to install firstly a compatible C++ compiler (see above section "Getting - compiling - installing GNU tools").
+		The SDK includes the MinGW C++ compiler.
+	The following instructions are for Qt LGPL Framework for MinGW:
+	You may want to use the Qt command prompt, in which case you don't need to care about the details below (QTDIR, PATH and QMAKESPEC).
+	If you want to use the Windows command prompt:
+		Set QTDIR environment variable to C:\Qt\4.7.3
+		Add in the PATH environment variable these directories: C:\Qt\4.7.3\bin and C:\mingw\bin
+		Set QMAKESPEC environment variable to win32-g++
+		(these are the default directories, but you may have chosen different ones, so use them instead).
+
+	Mac OS X:
+	Maybe you can get pre-compiled Qt packages for Mac OS X. If not, get Qt from http://qt.nokia.com/
+
+	Note about the Qt "QMAKESPEC" variable: advanced topic, read this if you get Qt errors about the environment not being set, or environment
+	variable QMAKESPEC not being set, or if the Qt environment is not set correctly: Qt needs to know the environment you are using. It is usually
+	something like: linux-g++, macx-g++ or win32-g++ (platform-compiler). You can find all the supported platforms in the directory "mkspecs" of Qt
+	(some usual locations are /usr/share/qt4/mkspecs or /usr/lib/qt4/mkspecs on GNU/Linux or C:\Qt\4.7.3\mkspecs on Windows).
+	It seems that Qt automatically finds the platform (there is a default configuration in the "default" subdirectory of the "mkspecs" directory,
+	which is created automatically when you install Qt). If the default configuration is not working or is wrong, you may need to set the
+	correct QMAKESPEC variable for your platform. Under Windows, you can create an environment variable QMAKESPEC equal to win32-g++
+	(if you are using MinGW), under other platforms create an environment variable named QMAKESPEC equal with the correct platform-compiler
+	you are working on (for instance macx-g++ or linux-g++).
+
+
+Compiling FET:
+
+	Note: compilation takes long (maybe even 1 hour, if you are using an older computer). The file
+	rules.cpp takes the longest time to compile, maybe even 1 minute or more.
+
+	Note2: the following situation may appear under GNU/Linux, but it could be met also on other platforms.
+	Depending on your Qt installation, it may happen that the FET intermediary files and executable are very large
+	(~100 MB for the fet executable instead of ~10 MB). The author is not sure if this affects the FET speed and performance, but anyway it is
+	unpleasant. In this case, you may want to modify some files in your system (Qt files) to improve this. You need to change some Qt configuration
+	files and recompile FET from the beginning (remove any temporary files with make distclean or unpack FET sources again, in an empty location).
+	Notations: mkspecs is a directory and QMAKE_CFLAGS_RELEASE and QMAKE_CXXFLAGS_RELEASE are two sections (text on two lines) contained in a file
+	in a subdirectory of mkspecs (some possible location for these are given in this paragraph, shortly below).
+	If mkspecs files for your platform contain the -g flag (text) in the QMAKE_CFLAGS_RELEASE or QMAKE_CXXFLAGS_RELEASE sections, you need to remove
+	this flag. If they do not contain -g flag in these sections, then you don't need to remove anything (and most probably the intermediary files and fet
+	executable will have normal size).
+	More details about where can you find the mkspecs files: under openSUSE GNU/Linux, it seems that for newer versions of Qt (>=4.7.1), the problem
+	is no longer present. In the past, the location of this minor problem was in the file /usr/share/qt4/mkspecs/common/g++.conf, at lines 10 and 25,
+	you needed to remove the "-g" flag from the QMAKE_CFLAGS_RELEASE and QMAKE_CXXFLAGS_RELEASE sections (root access needed to make this change).
+	Under Fedora GNU/Linux for the same problem, a user reported that you need to modify /usr/lib/qt4/mkspecs/common/g++.conf
+	and /usr/lib/qt4/mkspecs/linux-g++/qmake.conf (remove the -g flag from QMAKE_CFLAGS_RELEASE and QMAKE_CXXFLAGS_RELEASE sections).
+	(The mkspecs directory contains more subdirectories, in the form platform-compiler, you need to search for your corresponding directories/files.
+	For instance, GNU/Linux with gcc compiler is named "linux-g++", and you may also need to modify the "common" section).
+	
+	Note NMkJobs: advice from a user: if you have a multiple core computer, you may be able to split the compilation into more threads, with the -j option for the
+	make command, so that the compilation is faster. This option creates a number of compilation threads equal with the number specified along with the -j option.
+	Under GNU/Linux or similar, just write "make -j 2" if you have dual core or "make -j 4" if you have quad core (in case you have quad core and you want
+	to keep a core free for other tasks, write "make -j 3"). This is proven to work under GNU/Linux and Mac OS X, but seems not to work under Windows
+	(using mingw32-make, the -j argument seems to be ignored, for the time being).
+
+	Currently FET can be compiled with a C++ compiler, using Qt version 4.7.3 or compatible.
+
+
+	GNU/Linux and similar OS's:
+	- You will need Qt 4.7.3 or compatible to compile this program.
+	- type "qmake fet.pro" or simply "qmake". You have to use qmake from Qt 4 series, which on some systems
+	might be named qmake-qt4 (this command is executed very fast, so don't worry if you get immediate return from it)
+	- type "make" (this takes a long time, maybe even 1 hour). See also note NMkJobs above.
+	To remove the compiled objects/executable: "make clean" and/or "make distclean".
+
+
+	Mac OS X:
+	2 Variants:
+
+	1. First variant, if you use gcc compiler:
+	- You will need Qt 4.7.3 or compatible to compile this program.
+	- type "qmake fet.pro" or simply "qmake". You have to use qmake from Qt 4 series, which on some systems
+	might be named qmake-qt4. So, "qmake-qt4 fet.pro" might sometimes be needed.
+	(this command is executed very fast, so don't worry if you get immediate return from it)
+	- IMPORTANT: you might need to write: "qmake -spec macx-g++ fet.pro", if "qmake fet.pro" 
+	does not produce a correct makefile. Please see 
+	http://lists.trolltech.com/qt-interest/2007-04/thread01126-0.html for details.
+	- type "make" (this takes a long time, maybe even 1 hour). See also note NMkJobs above.
+	To remove the compiled objects/executable: "make clean" and/or "make distclean".
+
+	2. Another variant:
+	- Type "qmake fet.pro" and then "xcodebuild".
+
+	If you encounter problems, please see:
+	http://lists.trolltech.com/qt-interest/2007-04/thread01126-0.html
+
+
+	Microsoft Windows: MinGW C++ compiler: you need Qt 4.7.3 or compatible, and MinGW.
+	You might use other compilers if you want, please see the Qt web page http://qt.nokia.com/
+	for other variants. Any C++ compiler that supports Qt should be good.
+	You need to run "qmake fet.pro" or "qmake" (this command is executed very fast, so don't worry if you get
+	immediate return from it) and then, if you are using MinGW, "mingw32-make" (this takes a long time, maybe even 1 hour) 
+	in a command line in the FET directory. See also note NMkJobs above.
+	(You can use the command line prompt of Windows or the Qt command line prompt shortcut in the Qt shortcuts menu.)
+	Then, you can remove the directories "src" and "tmp", to save up space, if you want.
+	For MinGW: you need to copy these 8 files into the FET directory (in the same place as fet.exe):
+	(QTDIR is an abbreviation for C:\Qt\4.7.3 if you use Qt 4.7.3)
+	QTDIR\bin\mingwm10.dll, QTDIR\bin\libgcc_s_dw2-1.dll,
+	QTDIR\bin\Qt3Support4.dll, QTDIR\bin\QtCore4.dll, QTDIR\bin\QtGui4.dll,
+	QTDIR\bin\QtNetwork4.dll, QTDIR\bin\QtSQl4.dll, QTDIR\bin\QtXml4.dll.
+
+
+Installing FET:
+
+	GNU/Linux and similar OS's:
+	Please move the whole directory "fet-v.v.v" into the place where you like,
+	for instance to the directory "/usr/local/".
+
+	Microsoft Windows:
+	Move the FET directory in a place of your choice.
+
+
+Running FET:
+	Note: The FET main window contains a menu with the items: File, Data, Statistics, Advanced,
+	Timetable, Settings, Help. Everything is right if you have that. Optionally, on the main window there may be a toolbox
+	containing shortcuts (if selected by the user in the settings. By default it is selected).
+	
+	Note: to run FET in interface mode, you just need to run the executable named fet or fet.exe.
+	No additional parameters are needed/allowed. If you give additional parameters, FET will
+	consider that you want to run the command line version (see below instructions for command line version).
+
+	GNU/Linux and similar OS's:
+	chdir to the directory where the fet executable is (for instance, "cd /home/liviu/fet-v.v.v/") and run it with "./fet" or with the suitable command
+	for your platform. Alternatively, you may run the executable named fet from the fet-v.v.v directory, using another method. The fet executable
+	will be located inside the fet-v.v.v directory after a successful compilation.
+	
+	Note for Mac OS X about using translations (if you want to run FET into other language): it seems that you need to copy the contents
+	of the "translations/" directory into the directory fet-v.v.v/fet.app/Contents/MacOS/translations/ or into the directory /usr/share/fet/translations/
+	(if you compiled/installed FET by yourself). Or copy the whole directory translations/ into fet-v.v.v/fet.app/Contents/MacOS/ or into usr/share/fet/
+	More notes for the Mac OS X platform, from a user: copying the translations/ directory into the directory fet.app/Contents/MacOS/ is
+	possible from the command line in X11 xterm (but it is not possible with the finder program, because the file extension ".app" is
+	exclusive for applications, so the program finder interprets a directory with the extension ".app" as an application).
+
+	Microsoft Windows:
+	Run the executable fet.exe (its location is inside the fet-v.v.v directory, you can find it there if you have FET precompiled for Windows or after you compiled it).
+
+	COMMAND LINE: no GUI, just run "fet --inputfile=x [--outputdir=d] [--timelimitseconds=y] [--htmllevel=z] [--language=t] [--printnotavailable=u] [--printbreak=b]
+	 [--dividetimeaxisbydays=v] [--printsimultaneousactivities=w] [--randomseedx=rx --randomseedy=ry] [--warnifusingnotperfectconstraints=s]
+	 [--warnifusingstudentsminhoursdailywithallowemptydays=p]",
+	where	x is the input file, for instance "data.fet"
+			d is the path to results directory, without trailing slash or backslash (default is current working path).
+				Make sure you have write permissions there.
+			y is integer (seconds) (default 2000000000, which is practically infinite).
+			z is integer from 0 to 6 and represents the detail level for the generated html timetables
+				(default 2, larger values have more details/facilities and larger file sizes).
+			t is one of en_US, ar, ca, da, de, el, es, fa, fr, gl, he, hu, id, it, lt, mk, ms, nl, pl, pt_BR, ro, ru, si, sk, sr, tr, uk (default en_US).
+			u is either "true" or "false" and represents if you want -x- (for true) or --- (for false) in the generated timetables for the
+				not available slots (default true).
+			b is either "true" or "false" and represents if you want -X- (for true) or --- (for false) in the generated timetables for the
+				break slots (default true).
+			v is either true or false, represents if you want html timetables with time-axis divided by days (default false).
+			w is either true or false, represents if you want html timetables to show related activities which have constraints with same starting time (default false).
+				(for instance, if A1 (T1, G1) and A2 (T2, G2) have constraint activities same starting time, then in T1's timetable will appear also A2, at the same slot
+				as A1).
+			rx is the random seed X component, minimum 1 to maximum 2147483646, ry is the random seed Y component, minimum 1 to maximum 2147483398
+				(you can get the same timetable if the input file is identical, if the FET version is the same and if the random seed X and Y components are the same).
+			s is either true or false, represents whether you want a message box to be shown, with a warning, if the input file contains not perfect constraints
+				(activity tag max hours daily or students max gaps per day) (default true).
+			p is either true or false, represents whether you want a message box to be shown, with a warning, if the input file contains non standard constraints
+				students min hours daily with allow empty days (default true).
+
+	Alternatively, you can run "fet --version [--outputdir=d]" to get the current FET version.
+	where	d is the path to results directory, without trailing slash or backslash (default is current working path).
+				Make sure you have write permissions there.
+	(If you specify the "--version" argument, FET just prints version number on the command line prompt and in the output directory and exits.)
+
+	The result of the operation is logged into file outputdir/logs/result.txt.
+
+	Also, you have in logs the initial order of activities and a list of maximum placed number of activities. If your timetable is impossible, say it stops
+	at maximum n placed activities, look at the n+1-st activity in the initial order, for it or its students/teachers may be the problem.
+
+	For the command line version, probably the most useful output to use internally in an application might be the activities_timetable.xml.
+	You have of course also the xml timetables for students and teachers and the nicely formatted html timetables to present directly.
+
+	On GNU/Linux and Mac OS X, you'll get a console output to help you with data, along with the files in the directory outputdir/logs/.
+
+	On Windows, there is no console output, only the files in the directory outputdir\logs\ will guide you,
+	The author cannot make a console output on Windows (it is possible, but it would complicate the interface).
+
+
+Languages (translations):
+
+	The translation files which the FET executable needs in order to be able to run in other languages are ending in .qm (like fet_**.qm)
+	and they are located in the "translations" directory in the FET distribution.
+
+	FET will search for translations (fet_**.qm files) in the following order:
+	1) directly in the directory where the fet executable is,
+	2) the directory "translations" in the directory where fet executable is,
+	3) the directory /usr/share/fet/translations (under GNU/Linux or Mac OS X).
+
+	So, on:
+	Windows: if fet.exe is in C:\fet-v.v.v, fet will search for the file fet_**.qm in
+		C:\fet-v.v.v and then in C:\fet-v.v.v\translations
+	GNU/Linux: if the fet executable is in /home/liviu/fet-v.v.v, fet will search for the file fet_**.qm in
+		/home/liviu/fet-v.v.v, then in /home/liviu/fet-v.v.v/translations and then in /usr/share/fet/translations
+	Mac OS X: the operation is approximately similar to GNU/Linux.
+		The difference is that it seems that the fet application on Mac OS X contains in turn other directories (application directories),
+		so FET will search for the translations inside these application directories, not in the fet-v.v.v directory. The GNU/Linux style fet executable
+		seems to be located in fet-v.v.v/fet.app/Contents/MacOS, so FET will search for the file fet_**.qm in the directory
+		fet-v.v.v/fet.app/Contents/MacOS, then in the directory fet-v.v.v/fet.app/Contents/MacOS/translations,
+		then in the directory /usr/share/fet/translations.
+		Please see also the Mac OS X note from the section "Running FET".
+		More notes for the Mac OS X platform, from a user: copying the translations/ directory into the directory fet.app/Contents/MacOS/ is
+		possible from the command line in X11 xterm (but it is not possible with the finder program, because the file extension ".app" is
+		exclusive for applications, so the program finder interprets a directory with the extension ".app" as an application).
+
+	What to do if you get stuck with an unknown language: in each language, the submenu (Settings->)Language is translated also in English
+		(like: Limba/Language in Romanian). You can select the US English language (en_US abbreviation) and then close and restart FET (press the middle button
+		from the dialog that appears after trying to close FET, so that FET will exit without saving the current file).
+	Another solution: modify the FET settings on your operating system:
+		- Under GNU/Linux or similar, probably in $HOME/.config directory you'll find a directory "fet",
+		containing file "fettimetabling.conf". Edit that file - the line beginning with language, instead of language=... (for instance, language=ro),
+		make it language=en_US (case sensitive).
+		- Under Microsoft Windows: run regedit.exe (Registry Editor), search key "fet". You will find a section "fet" with sub-section "fettimetabling".
+		Modify the value name language (from, for instance, ro, or other language) to have the value data en_US (5 characters, case sensitive).
+	Another solution: simply remove the translation files (or move them so they are not available to the fet executable) and start FET. It will report
+		that the custom language is not found and it will revert to en_US.
+
+
+Documentation:
+
+	Some hints in the directory "fet-v.v.v/doc/".
+	Some other hints in the Help menu.
+	You may find more documentation on the FET homepage.
+
+
+Input files:
+
+	You can open a few sample input files in "fet-v.v.v/examples/" directory
+	(under GNU/Linux or Mac OS X, they may be found in /usr/share/doc/fet/, or /usr/share/fet/)
+
+	You can create/modify a file from FET's user interface or you can modify it by hand, if you like.
+
+
+Un-installing FET:
+
+	Remove the directory fet-v.v.v. Also, you may want to remove the directory with the fet results (default: $HOME/fet-results).
+	This will leave the settings of FET on your system, certainly this is not a problem.
+	FET stores a few bytes in your operating system settings. If you really want to get rid of everything FET created, read below.
+
+	To remove the FET settings from your operating system (unnecessary step):
+
+	GNU/Linux and similar OS's:
+	Probably in $HOME/.config directory you'll find a directory "fet" containing file "fettimetabling.conf". Remove the file and the directory.
+
+	Microsoft Windows:
+	Run regedit.exe (Registry Editor), search key "fet". You will find a section "fet" with sub-section "fettimetabling". Remove the "fet" section.
+
+
+Feed-back / help:
+
+	- The author would like to hear your opinion about this program; any feed-back would be greatly appreciated.
+	- You are encouraged to send your data files, for the purpose of testing or for inclusion into examples. You can write on the forum
+	or mailing list for this, or contact the author.
+	- Reporting bugs/wishes/patches: to forum, mailing list or author.
+
+
+Copyright (C) 2002-2011 Liviu Lalescu <http://lalescu.ro/liviu/>.
